@@ -1,0 +1,36 @@
+<div class="Home">
+  <app-banner></app-banner>
+  <app-row
+    title="Netflix Originals"
+    [fetchUrl]="requestService.requests.fetchTending"
+    [isLargeRow]="true"
+  ></app-row>
+  <app-row
+    title="Trending Now"
+    [fetchUrl]="requestService.requests.fetchNetflixOriginals"
+  ></app-row>
+  <app-row
+    title="Top Rated"
+    [fetchUrl]="requestService.requests.fetchTopRated"
+  ></app-row>
+  <app-row
+    title="Action Movies"
+    [fetchUrl]="requestService.requests.fetchActionMovies"
+  ></app-row>
+  <app-row
+    title="Comedy Movies"
+    [fetchUrl]="requestService.requests.fetchComedyMovies"
+  ></app-row>
+  <app-row
+    title="Horror Movies"
+    [fetchUrl]="requestService.requests.fetchHorrorMovies"
+  ></app-row>
+  <app-row
+    title="Romance Movies"
+    [fetchUrl]="requestService.requests.fetchRomanceMovies"
+  ></app-row>
+  <app-row
+    title="Documentaries"
+    [fetchUrl]="requestService.requests.fetchDocumentaries"
+  ></app-row>
+</div>

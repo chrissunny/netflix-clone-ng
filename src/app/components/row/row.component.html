@@ -1,0 +1,15 @@
+<div class="row">
+  <h3 class="row__title">{{ title }}</h3>
+  <div class="row__posters">
+    <div class="row__poster" *ngFor="let movie of movies">
+      <img
+        class="poster"
+        [ngClass]="{ posterLarge: isLargeRow }"
+        src="{{
+          baseImageUrl + (isLargeRow ? movie.poster_path : movie.backdrop_path)
+        }}"
+        [alt]="movie.original_title"
+      />
+    </div>
+  </div>
+</div>
