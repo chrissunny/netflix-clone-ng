@@ -1,6 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +21,13 @@ import { BannerComponent } from './components/banner/banner.component';
     RowComponent,
     BannerComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule,
+    HttpClientModule,
+    NgxYoutubePlayerModule.forRoot(),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

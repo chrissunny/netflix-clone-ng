@@ -41,3 +41,14 @@
 .posterLarge:hover {
   transform: scale(1.2);
 }
+
+.row__video {
+  object-fit: contain;
+  width: 100%;
+  transition: transform 500ms;
+}
+
+.row__video > youtube-player {
+  display: flex;
+  justify-content: center;
+}

@@ -3,6 +3,7 @@
   <div class="row__posters">
     <div class="row__poster" *ngFor="let movie of movies">
       <img
+        (click)="movieSelected(movie)"
         class="poster"
         [ngClass]="{ posterLarge: isLargeRow }"
         src="{{
@@ -11,5 +12,15 @@
         [alt]="movie.original_title"
       />
     </div>
+  </div>
+  <div class="row__video">
+    <youtube-player
+      *ngIf="showVideo()"
+      [videoId]="videoId"
+      (ready)="onReady($event)"
+      (change)="onStateChange($event)"
+      height="400"
+      width="1000"
+    ></youtube-player>
   </div>
 </div>

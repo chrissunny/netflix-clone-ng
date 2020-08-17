@@ -6,6 +6,9 @@ import { Injectable } from '@angular/core';
 export class ThemoviedbRequestService {
   private apiKey = '6c4c4dde505f8c23a9079be33e088fcd';
   baseUrl = 'https://api.themoviedb.org/3';
+
+  private googleApiKey = 'AIzaSyA82pQ5Kjl9BRPHcCByTk0MlB0voEKYkGw';
+  youtubeApiBaseUrl = 'https://www.googleapis.com/youtube/v3/';
   constructor() {}
 
   requests = {
@@ -20,4 +23,10 @@ export class ThemoviedbRequestService {
   };
 
   baseImageUrl = 'https://image.tmdb.org/t/p/original/';
+
+  getTrailerUrl(name: string) {
+    let searchQuery = `search?part=snippet&q=trailer ${name}&topicId=%2Fm%2F02vxn&key=`;
+    let url = this.youtubeApiBaseUrl + searchQuery + this.googleApiKey;
+    return url;
+  }
 }
