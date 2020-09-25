@@ -20,6 +20,7 @@ export class ThemoviedbRequestService {
     fetchHorrorMovies: `${this.baseUrl}/discover/movie?api_key=${this.apiKey}&with_genres=27`,
     fetchRomanceMovies: `${this.baseUrl}/discover/movie?api_key=${this.apiKey}&with_genres=10749`,
     fetchDocumentaries: `${this.baseUrl}/discover/movie?api_key=${this.apiKey}&with_genres=99`,
+    fetchMovieByID: `${this.baseUrl}/movie/`,
   };
 
   baseImageUrl = 'https://image.tmdb.org/t/p/original/';
@@ -28,5 +29,9 @@ export class ThemoviedbRequestService {
     let searchQuery = `search?part=snippet&q=trailer ${name}&topicId=%2Fm%2F02vxn&key=`;
     let url = this.youtubeApiBaseUrl + searchQuery + this.googleApiKey;
     return url;
+  }
+
+  getapiKey() {
+    return `?api_key=${this.apiKey}`;
   }
 }

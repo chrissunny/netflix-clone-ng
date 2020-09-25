@@ -1,0 +1,22 @@
+.movie {
+}
+
+.movie__video {
+  object-fit: contain;
+  display: flex;
+  justify-content: center;
+}
+
+.movie__details__row {
+  display: flex;
+  justify-content: left;
+}
+
+.movie__details__row__item {
+  margin-left: 20px;
+  color: white;
+}
+
+.movie__details__row__item > .badge {
+  margin-left: 10px;
+}

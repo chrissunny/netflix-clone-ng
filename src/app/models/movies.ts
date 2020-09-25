@@ -16,4 +16,18 @@ export interface Movies {
   vote_count: number;
   original_title?: string;
   original_name?: string;
+  genres: Genres[];
+  budget: number;
+  revenue: number;
+  production_countries: ProductionCountry[];
+}
+
+export interface Genres {
+  id: number;
+  name: string;
+}
+
+export interface ProductionCountry {
+  iso_3166_1: string;
+  name: string;
 }

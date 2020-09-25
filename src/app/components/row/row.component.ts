@@ -26,6 +26,9 @@ export class RowComponent implements OnInit {
   player: YT.Player;
   videoId: string = '';
 
+  selectedID: number;
+  selectedBackDrop: string;
+
   constructor(
     private requestService: ThemoviedbRequestService,
     private httpClient: HttpClient,
@@ -75,8 +78,12 @@ export class RowComponent implements OnInit {
   movieSelected(movie: Movies) {
     if (this.videoId) {
       this.videoId = '';
+      this.selectedID = 0;
+      this.selectedBackDrop = '';
     } else {
       this.getMovieTrailer(movie?.name);
+      this.selectedID = movie?.id;
+      this.selectedBackDrop = movie?.backdrop_path;
     }
   }
 
@@ -88,7 +95,13 @@ export class RowComponent implements OnInit {
 
     response.then((data) => {
       if (data.items.length > 0) {
-        self.videoId = data.items[0].id.videoId;
+        let foundVideo = false;
+        data.items.forEach(function (video) {
+          if (!foundVideo && typeof video.id.videoId != 'undefined') {
+            self.videoId = video.id.videoId;
+            foundVideo = true;
+          }
+        });
       }
     });
   }

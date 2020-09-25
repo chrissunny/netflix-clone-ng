@@ -1,1 +1,54 @@
-<p>movie works!</p>
+<div class="movie">
+  <app-banner></app-banner>
+
+  <div class="movie__details">
+    <div class="movie__details__row" *ngIf="movie?.budget > 0">
+      <h5 class="movie__details__row__item">Budget</h5>
+      <h5 class="movie__details__row__item">${{ movie?.budget }}</h5>
+    </div>
+
+    <div class="movie__details__row" *ngIf="movie?.revenue > 0">
+      <h5 class="movie__details__row__item">Revenue</h5>
+      <h5 class="movie__details__row__item">${{ movie?.revenue }}</h5>
+    </div>
+
+    <div class="movie__details__row">
+      <h5 class="movie__details__row__item">Release Date</h5>
+      <h5 class="movie__details__row__item">
+        {{ movie?.release_date }}
+      </h5>
+    </div>
+
+    <div class="movie__details__row" *ngIf="movie?.genres.length > 0">
+      <h5 class="movie__details__row__item">
+        Genre
+        <span *ngFor="let genre of movie?.genres" class="badge">
+          {{ genre.name }}
+        </span>
+      </h5>
+    </div>
+
+    <div
+      class="movie__details__row"
+      *ngIf="movie?.production_countries.length > 0"
+    >
+      <h5 class="movie__details__row__item">
+        Filmed In
+        <span *ngFor="let country of movie.production_countries" class="badge">
+          {{ country.name }}
+        </span>
+      </h5>
+    </div>
+  </div>
+
+  <div class="movie__video">
+    <youtube-player
+      *ngIf="showVideo()"
+      [videoId]="videoId"
+      (ready)="onReady($event)"
+      (change)="onStateChange($event)"
+      height="600"
+      width="1600"
+    ></youtube-player>
+  </div>
+</div>

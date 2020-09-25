@@ -22,5 +22,14 @@
       height="400"
       width="1000"
     ></youtube-player>
+    <div class="row__detail">
+      <button
+        *ngIf="showVideo()"
+        class="banner__button"
+        [routerLink]="['/movies/' + selectedID + '/' + selectedBackDrop]"
+      >
+        Open Movie
+      </button>
+    </div>
   </div>
 </div>

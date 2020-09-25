@@ -4,12 +4,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'movies', component: MovieComponent}
+  { path: '', component: HomeComponent },
+  { path: 'movies/:selectedMovieID/:backDrop', component: MovieComponent },
+  { path: 'movies/:selectedMovieID', component: MovieComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

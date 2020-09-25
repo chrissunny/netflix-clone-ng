@@ -1,3 +1,5 @@
+import { ThemoviedbdataService } from './../../services/themoviedb-data.service';
+import { ActivatedRoute } from '@angular/router';
 import { ThemoviedbRequestService } from './../../services/themoviedb-request.service';
 import { HttpClient } from '@angular/common/http';
 import { MovieSearchResult } from './../../models/movies-search-result';
@@ -16,11 +18,21 @@ export class BannerComponent implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private requestService: ThemoviedbRequestService,
-    private commonMethods: CommonMethodsService
+    private commonMethods: CommonMethodsService,
+    private route: ActivatedRoute,
+    private theMovieDbData: ThemoviedbdataService
   ) {}
 
+  backDrop: string = '';
+
   ngOnInit(): void {
-    this.getRandomMovieDetails();
+    let id = this.route.snapshot.paramMap.get('selectedMovieID');
+    if (id != null) {
+      this.getMovieDetails(parseInt(id));
+      this.backDrop = this.route.snapshot.paramMap.get('backDrop');
+    } else {
+      this.getRandomMovieDetails();
+    }
   }
 
   getRandomMovieDetails() {
@@ -38,6 +50,25 @@ export class BannerComponent implements OnInit {
           self.commonMethods.getRandomNumber(result.results.length)
         ];
       m.backdrop_path = self.requestService.baseImageUrl + m.backdrop_path;
+      self.movie = self.commonMethods.getMovieName(m);
+    });
+  }
+
+  getMovieDetails(id: number) {
+    var self = this;
+
+    let response = this.httpClient
+      .get<Movies>(
+        `${
+          this.requestService.requests.fetchMovieByID
+        }${id}${this.requestService.getapiKey()}`
+      )
+      .toPromise();
+
+    response.then((result) => {
+      let m = result;
+
+      m.backdrop_path = self.requestService.baseImageUrl + self.backDrop;
       self.movie = self.commonMethods.getMovieName(m);
     });
   }

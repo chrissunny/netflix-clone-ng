@@ -9,11 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
   handleShow: boolean = false;
-  constructor() {
-    // this.scrollDispatcher
-    //   .scrolled()
-    //   .subscribe((x) => console.log('I am scrolling '));
-  }
+
+  selectedMovieID: number = 70785;
+
+  constructor() {}
 
   ngOnInit(): void {
     window.addEventListener('scroll', () => {
