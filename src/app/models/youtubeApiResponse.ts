@@ -1,4 +1,4 @@
-import { Youtube } from './youtube';
+import { Youtube } from './youtubes';
 
 export interface YoutubeApiResponse {
   kind: string;
